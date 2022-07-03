@@ -11,7 +11,7 @@ public class UserDAOImpl implements UserDAO {
 		// TODO Auto-generated method stub
 		int flag = 0; 
   
-        //Èç¹ûÓÃ»§ÊäÈëµÄÓÃ»§ÃûÊÇtom£¬ÃÜÂëÊÇ123£¬ÄÇÃ´ÖÃ±êÖ¾flagÎª1.   
+        //å¦‚æœç”¨æˆ·è¾“å…¥çš„ç”¨æˆ·åæ˜¯tomï¼Œå¯†ç æ˜¯123ï¼Œé‚£ä¹ˆç½®æ ‡å¿—flagä¸º1.   
         if(user.getUsername().equals("tom")&&user.getPassword().equals("123")){
                flag = 1;
             }   
