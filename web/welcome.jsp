@@ -6,7 +6,6 @@
   </head>
   
   <body>
-    <%String username = (String)session.getAttribute("username"); %>
-    welcome   <%= username %>
+    Welcome, <%= (String)session.getAttribute("username") %>!
   </body>
 </html>

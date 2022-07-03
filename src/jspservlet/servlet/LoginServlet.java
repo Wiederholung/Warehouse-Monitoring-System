@@ -14,31 +14,27 @@ import java.io.IOException;
 
 public class LoginServlet extends HttpServlet {
 	
-	 public void doGet(HttpServletRequest req, HttpServletResponse res)
-	    throws IOException, ServletException{
+	 public void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException{
 	 }
 	
-	 public void doPost(HttpServletRequest req, HttpServletResponse res)
-	    throws IOException, ServletException{
+	 public void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException{
 		 User user = new User();
 		 user.setUsername(req.getParameter("username"));
 		 user.setPassword(req.getParameter("password"));
 		 
 		 UserDAO dao = new UserDAOImpl();   
-	     int flag = 0;
-	     try {
-				flag = dao.queryByUsername(user);
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-		} 
-		 if(flag == 1){   
-			 HttpSession session=req.getSession();   
-	         session.setAttribute("username", user.getUsername());   
-	         res.sendRedirect("./welcome.jsp");
-	        } else {   
-	         res.sendRedirect("./error.jsp");
-	        }
+	     boolean judge = false;
+	     try {judge = dao.queryByUsername(user);}
+		 catch (Exception e) {
+			 // TODO Auto-generated catch block
+			 e.printStackTrace();
+		 }
+
+		 if(judge) {
+		 	req.getSession().setAttribute("username", user.getUsername());
+		 	res.sendRedirect("./welcome.jsp");
+		 }
+		 else {res.sendRedirect("./error.jsp");}
 	 }
 }
 	 
