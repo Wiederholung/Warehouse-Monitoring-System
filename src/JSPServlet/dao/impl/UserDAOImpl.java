@@ -1,13 +1,13 @@
-package jspservlet.dao.impl;
+package JSPServlet.dao.impl;
 
-import jspservlet.dao.UserDAO;
-import jspservlet.vo.User;
+import JSPServlet.dao.UserDAO;
+import JSPServlet.vo.User;
 
 
 public class UserDAOImpl implements UserDAO {
 
 
-	public boolean queryByUsername(User user) throws Exception {
+	public boolean queryByUsername(User user) {
 		// TODO Auto-generated method stub
   
         //如果用户输入的用户名是tom，密码是123，那么置标志flag为1.   

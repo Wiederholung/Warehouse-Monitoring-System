@@ -1,23 +1,21 @@
-package jspservlet.servlet;
+package JSPServlet.servlet;
 
 
-import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
-import jspservlet.dao.UserDAO;
-import jspservlet.dao.impl.UserDAOImpl;
-import jspservlet.vo.User;
+import JSPServlet.dao.UserDAO;
+import JSPServlet.dao.impl.UserDAOImpl;
+import JSPServlet.vo.User;
 
 import java.io.IOException;
 
 public class LoginServlet extends HttpServlet {
 	
-	 public void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException{
+	 public void doGet(HttpServletRequest req, HttpServletResponse res) {
 	 }
 	
-	 public void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException{
+	 public void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException {
 		 User user = new User();
 		 user.setUsername(req.getParameter("username"));
 		 user.setPassword(req.getParameter("password"));
