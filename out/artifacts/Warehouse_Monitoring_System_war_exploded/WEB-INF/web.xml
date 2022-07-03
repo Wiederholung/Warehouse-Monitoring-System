@@ -5,7 +5,7 @@
          version="4.0">
     <servlet>
         <servlet-name>loginServlet</servlet-name>
-        <servlet-class>jspservlet.servlet.LoginServlet</servlet-class>
+        <servlet-class>JSPServlet.servlet.LoginServlet</servlet-class>
     </servlet>
 
     <welcome-file-list>

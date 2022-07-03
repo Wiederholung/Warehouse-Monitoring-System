@@ -7,11 +7,11 @@
 	<body>
 		<form method="post" action="./login">
 			<label>
-				username:
+				Username:
 				<input type="text" name="username"/>
 			</label><br/>
 			<label>
-				password:
+				Password:
 				<input type="text" name="password"/>
 			</label><br/>
 			<input type="SUBMIT" name="submit" value="Submit"> 
