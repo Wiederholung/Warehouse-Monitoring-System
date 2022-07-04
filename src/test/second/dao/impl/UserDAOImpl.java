@@ -1,22 +1,47 @@
 package test.second.dao.impl;
 
-import test.first.dao.UserDAO;
-import test.first.vo.User;
-import java.sql.Connection;
-import java.sql.DriverManager;
 
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import test.second.dao.UserDAO;
+import test.second.db.DBConnect;
+import test.second.vo.User;
 
 public class UserDAOImpl implements UserDAO {
-	private static final String DATABASE_DRIVER = "com.mysql.cj.jdbc.Driver"; // 不用更改
-	private static final String DATABASE_URL = "jdbc:mysql://localhost:3306/lianxi?useUnicode=true&characterEncoding=UTF-8&userSSL=false&serverTimezone=GMT%2B8"; // 见上面的解释
-	private static final String DATABASE_USER = "root"; // 用户名
-	private static final String DATABASE_PASSWORD = "1234"; // 自己的密码
 
-	public boolean queryByUsername(User user) {
+	public int queryByUsername(User user) throws Exception {
 		// TODO Auto-generated method stub
-
-		//如果用户输入的用户名是tom，密码是123，那么置标志flag为1.
-		return (user.getUsername().equals("tom") && user.getPassword().equals("123"));
+		int flag = 0;
+		String sql = "select * from userinfo where username=?";
+        PreparedStatement pstmt = null;
+        DBConnect dbc = null;   
+  
+        // 下面是针对数据库的具体操作   
+        try{   
+            // 连接数据库   
+            dbc = new DBConnect() ;   
+            pstmt = dbc.getConnection().prepareStatement(sql) ; 
+            pstmt.setString(1,user.getUsername()) ;   
+            // 进行数据库查询操作   
+            ResultSet rs = pstmt.executeQuery();
+            System.out.println(user.getUsername());
+            while(rs.next()){  
+                // 查询出内容，之后将查询出的内容赋值给person对象   
+                if(rs.getString("password").equals(user.getPassword())){
+                	flag = 1;
+                } 
+            }   
+            rs.close() ; 
+            pstmt.close() ;   
+        }catch (SQLException e){   
+            System.out.println(e.getMessage());   
+        }finally{   
+            // 关闭数据库连接   
+            dbc.close() ;   
+        }   
+		return flag;
 	}
-}
 
+}

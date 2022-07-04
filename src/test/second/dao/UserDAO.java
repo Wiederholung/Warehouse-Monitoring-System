@@ -1,8 +1,8 @@
 package test.second.dao;
 
-import test.first.vo.User;
+import test.second.vo.User;
 
 public interface UserDAO {	
-	boolean queryByUsername(User user);
+	int queryByUsername(User user) throws Exception;
 
 }

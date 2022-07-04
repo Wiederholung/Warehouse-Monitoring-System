@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8"%>
 <html>
   <head>
-    <title>胡逸同的第一个Tomcat</title>
+    <title>Group 13's first Tomcat</title>
   </head>
   <body>
   Hello World!
