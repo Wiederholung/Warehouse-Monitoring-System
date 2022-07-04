@@ -1,7 +1,7 @@
-package first.dao.impl;
+package test.first.dao.impl;
 
-import first.dao.UserDAO;
-import first.vo.User;
+import test.first.dao.UserDAO;
+import test.first.vo.User;
 
 
 public class UserDAOImpl implements UserDAO {

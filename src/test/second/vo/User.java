@@ -1,4 +1,4 @@
-package first.vo;
+package test.second.vo;
 
 public class User {
 	private String username;

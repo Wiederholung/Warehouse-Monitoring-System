@@ -1,13 +1,13 @@
-package first.servlet;
+package test.second.servlet;
 
 
-import first.dao.UserDAO;
-import first.dao.impl.UserDAOImpl;
-import first.vo.User;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import test.first.dao.UserDAO;
+import test.first.dao.impl.UserDAOImpl;
+import test.first.vo.User;
 
 import java.io.IOException;
 

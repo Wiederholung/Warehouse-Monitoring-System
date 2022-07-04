@@ -1,6 +1,6 @@
-package first.dao;
+package test.second.dao;
 
-import first.vo.User;
+import test.first.vo.User;
 
 public interface UserDAO {	
 	boolean queryByUsername(User user);

@@ -9,6 +9,7 @@
         <webroots>
           <root url="file://$MODULE_DIR$/web" relative="/" />
         </webroots>
+        <sourceRoots />
       </configuration>
     </facet>
   </component>
@@ -21,6 +22,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" scope="PROVIDED" name="Tomcat 10.0.22" level="application_server_libraries" />
+    <orderEntry type="library" name="Tomcat 10.0.22" level="application_server_libraries" />
+    <orderEntry type="library" name="lib" level="project" />
   </component>
 </module>
