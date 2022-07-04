@@ -1,39 +1,36 @@
-package jspservlet.servlet;
+package first.servlet;
 
 
-import java.io.IOException;
-
-import jakarta.servlet.ServletException;
+import first.dao.UserDAO;
+import first.dao.impl.UserDAOImpl;
+import first.vo.User;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
-import jspservlet.dao.UserDAO;
-import jspservlet.dao.impl.UserDAOImpl;
-import jspservlet.vo.User;
+import java.io.IOException;
 
 public class LoginServlet extends HttpServlet {
 	
-	 public void doGet(HttpServletRequest req, HttpServletResponse res)
-	    throws IOException, ServletException{
+	 public void doGet(HttpServletRequest req, HttpServletResponse res) {
 	 }
 	
 	 public void doPost(HttpServletRequest req, HttpServletResponse res)
-	    throws IOException, ServletException{
+	    throws IOException {
 		 User user = new User();
 		 user.setUsername(req.getParameter("username"));
 		 user.setPassword(req.getParameter("password"));
 		 
 		 UserDAO dao = new UserDAOImpl();   
-	     int flag = 0;
+	     boolean flag = false;
 	     try {
 				flag = dao.queryByUsername(user);
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 		} 
-		 if(flag == 1){   
+		 if(flag){
 			 HttpSession session=req.getSession();   
 	         session.setAttribute("username", user.getUsername());   
 	         res.sendRedirect("./welcome.jsp");

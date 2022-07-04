@@ -1,4 +1,4 @@
-package jspservlet.vo;
+package first.vo;
 
 public class User {
 	private String username;

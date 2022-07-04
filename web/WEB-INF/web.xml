@@ -6,7 +6,7 @@
 	http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
   <servlet>
     <servlet-name>loginServlet</servlet-name>
-    <servlet-class>jspservlet.servlet.LoginServlet</servlet-class>
+    <servlet-class>first.servlet.LoginServlet</servlet-class>
   </servlet>
 
   <welcome-file-list>
