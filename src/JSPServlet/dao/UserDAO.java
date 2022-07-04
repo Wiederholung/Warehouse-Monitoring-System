@@ -1,8 +1,8 @@
-package JSPServlet.dao;
+package jspservlet.dao;
 
-import JSPServlet.vo.User;
+import jspservlet.vo.User;
 
 public interface UserDAO {	
-	boolean queryByUsername(User user);
+	public int queryByUsername(User user) throws Exception;
 
 }

@@ -1,4 +1,4 @@
-package JSPServlet.vo;
+package jspservlet.vo;
 
 public class User {
 	private String username;
@@ -15,4 +15,7 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	
+	
+
 }
