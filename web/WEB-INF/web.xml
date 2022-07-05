@@ -6,7 +6,7 @@
          version="4.0">
     <servlet>
         <servlet-name>loginServlet</servlet-name>
-        <servlet-class>control.LoginServlet</servlet-class>
+        <servlet-class>control.LoginAction</servlet-class>
     </servlet>
 
     <welcome-file-list>

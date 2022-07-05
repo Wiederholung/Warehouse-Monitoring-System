@@ -11,7 +11,7 @@ import model.dao.UserDAO;
 import model.dao.impl.UserDAOImpl;
 import model.vo.User;
 
-public class LoginServlet extends HttpServlet {
+public class LoginAction extends HttpServlet {
 	@Override
 	public void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
 	}
