@@ -1,15 +1,14 @@
 package control;
 
-import java.io.IOException;
-
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-
 import model.dao.UserDAO;
 import model.dao.impl.UserDAOImpl;
 import model.vo.User;
+
+import java.io.IOException;
 
 public class LoginServlet extends HttpServlet {
 	public void doGet(HttpServletRequest req, HttpServletResponse res)

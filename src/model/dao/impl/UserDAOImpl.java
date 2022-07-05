@@ -7,6 +7,7 @@ import model.vo.User;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Objects;
 
 public class UserDAOImpl implements UserDAO {
 
@@ -44,7 +45,7 @@ public class UserDAOImpl implements UserDAO {
 			System.out.println(e.getMessage());
 		} finally {
 			// 关闭数据库连接
-			dbc.close();
+			Objects.requireNonNull(dbc).close();
 		}
 		return flag;
 	}

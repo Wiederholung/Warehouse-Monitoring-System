@@ -5,7 +5,7 @@
   Time: 19:37
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
     <meta charset="UTF-8">
@@ -22,11 +22,15 @@
                 <p class="card_title-info">Warehouse Monitoring System</p>
                 <form class="card_form" method="post" action="./login">
                     <div class="input">
-                        <input type="username" class="input_field" required />
+                        <label>
+                            <input type="username" class="input_field" required />
+                        </label>
                         <label class="input_label">Username</label><br/>
                     </div>
                     <div class="input">
-                        <input type="password" class="input_field" required />
+                        <label>
+                            <input type="password" class="input_field" required />
+                        </label>
                         <label class="input_label">Password</label><br/>
 
                     </div>

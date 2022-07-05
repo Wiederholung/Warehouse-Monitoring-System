@@ -1,5 +1,4 @@
 import model.dao.UserDAO;
-import model.dao.impl.DBConnector;
 import model.dao.impl.UserDAOImpl;
 import model.vo.User;
 
