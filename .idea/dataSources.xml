@@ -1,11 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="ECS" uuid="a988c674-bcf3-4c5e-99fe-ed73cf0e061d">
+    <data-source source="LOCAL" name="ECS@xbz" uuid="a988c674-bcf3-4c5e-99fe-ed73cf0e061d">
       <driver-ref>mysql.8</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://dev.metattri.com:3306</jdbc-url>
+      <jdbc-url>jdbc:mysql://dev.metattri.com:3308</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
+    <data-source source="LOCAL" name="TS-453Dmini@wada.metattri.com" uuid="b9f9d09b-95da-49f6-82bb-5098b24ae618">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://wada.metattri.com:3360</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
   </component>

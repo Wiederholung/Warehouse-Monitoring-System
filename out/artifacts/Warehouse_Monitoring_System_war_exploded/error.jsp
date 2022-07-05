@@ -8,7 +8,7 @@
 
 <body>
 <script type="text/javascript" >
-    alert("the wrong password£¡");
+    alert("Wrong password");
 
     window.location='login.jsp' ;
 </script>
