@@ -3,7 +3,7 @@
 body {
     font-family: Roboto, sans-serif;
     color: #5e6c8a;
-    background-image:url("warehouse.webp");
+    background-image:url("WEB-INF/resources/warehouse.webp");
     background-size:cover;
     height: 100%;
     display: flex;

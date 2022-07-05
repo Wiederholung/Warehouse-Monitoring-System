@@ -27,9 +27,7 @@ public class DBConnector {
         return conn;
     }
 
-    public Statement getStatement() {
-        return stmt;
-    }
+    public Statement getStatement() { return stmt; }
 
     public void close() {
         try {
