@@ -5,12 +5,11 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
+import java.io.IOException;
+
 import model.dao.UserDAO;
 import model.dao.impl.UserDAOImpl;
 import model.vo.User;
-
-import java.io.IOException;
-
 
 public class LoginServlet extends HttpServlet {
 	@Override
