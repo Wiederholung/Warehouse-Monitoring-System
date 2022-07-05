@@ -15,5 +15,4 @@ public class Test {
         else if (flag == -1) System.out.println("No User");
         else System.out.println("wrong password");
     }
-
 }
