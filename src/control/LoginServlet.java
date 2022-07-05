@@ -1,34 +1,36 @@
 package control;
 
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+
+import java.io.IOException;
+
 import model.dao.UserDAO;
 import model.dao.impl.UserDAOImpl;
 import model.vo.User;
 
-import java.io.IOException;
 
 public class LoginServlet extends HttpServlet {
-	public void doGet(HttpServletRequest req, HttpServletResponse res)
-			throws IOException, ServletException {
+	@Override
+	public void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
 	}
 
-	public void doPost(HttpServletRequest req, HttpServletResponse res)
-			throws IOException, ServletException {
+	@Override
+	public void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
 		User user = new User();
 		user.setUsername(req.getParameter("username"));
 		user.setPassword(req.getParameter("password"));
 
-		UserDAO dao = new UserDAOImpl();
+		UserDAO userDAO = new UserDAOImpl();
 
-		int flag = dao.queryByUsername(user);
+		int flag = userDAO.login(user);
 		if (flag == 1) {
 			req.getSession().setAttribute("username", user.getUsername());
 			res.sendRedirect("./welcome.jsp");
 		}
-		else if (flag == 0) res.sendRedirect("./error.jsp");
-		else res.sendRedirect("./iderror.jsp");
+		else if (flag == -1) res.sendRedirect("./errorName.jsp");
+		else res.sendRedirect("./errorPass.jsp");
 	}
 }

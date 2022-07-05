@@ -5,14 +5,14 @@ import model.vo.User;
 public class Test {
     public static void main(String[] args) {
         User user = new User();
-        user.setUsername("HYT");
+        user.setUsername("lj");
         user.setPassword("C 2998-mysql");
-        UserDAO dao = new UserDAOImpl();
-        int flag = dao.queryByUsername(user);
+        UserDAO userDAO = new UserDAOImpl();
+        int flag = userDAO.login(user);
         if (flag == 1) {
-            System.out.println("success");
+            System.out.println("You are in!");
         }
-        else if (flag == -1) System.out.println("No User");
-        else System.out.println("wrong password");
+        else if (flag == -1) System.out.println("Not a user.");
+        else System.out.println("Wrong password.");
     }
 }

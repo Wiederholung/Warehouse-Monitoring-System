@@ -2,7 +2,14 @@ package model.dao;
 
 import model.vo.User;
 
-public interface UserDAO {	
-	int queryByUsername(User user);
-	boolean checkUsername(String username);
+public interface UserDAO {
+	boolean doseUserExist(User user);
+
+	boolean checkPasswordStrength(User user);
+
+	int checkInfo(User user);
+
+	int login(User user);
+
+	int register(User user);
 }

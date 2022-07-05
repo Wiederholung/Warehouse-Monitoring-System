@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.Statement;
 
-public class DBConnector {
+public class DBUtil {
     private static final String JDBC_DRIVER  = "com.mysql.cj.jdbc.Driver";
     private static final String DB_URL = "jdbc:mysql://wada.metattri.com:3360/mydb" +
             "?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC";
@@ -13,21 +13,16 @@ public class DBConnector {
     private Connection conn = null;
     private Statement stmt = null;
 
-    public DBConnector() {
+    public DBUtil() {
         try {
-            Class.forName(JDBC_DRIVER );
+            Class.forName(JDBC_DRIVER);
             conn = DriverManager.getConnection(DB_URL, USER, PASSWORD);
             stmt = conn.createStatement();
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            // TODO Auto-generated catch block
+            e.printStackTrace();
         }
     }
-
-    public Connection getConnection() {
-        return conn;
-    }
-
-    public Statement getStatement() { return stmt; }
 
     public void close() {
         try {
@@ -35,6 +30,15 @@ public class DBConnector {
             conn.close();
         } catch (Exception e) {
             // TODO Auto-generated catch block
+            e.printStackTrace();
         }
+    }
+
+    public Connection getConnection() {
+        return conn;
+    }
+
+    public Statement getStatement() {
+        return stmt;
     }
 }

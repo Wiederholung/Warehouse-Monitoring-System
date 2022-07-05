@@ -1,16 +1,25 @@
 @import url(https://fonts.googleapis.com/css?family=Oswald|Roboto);
 
-body {
+body{
     font-family: Roboto, sans-serif;
     color: #5e6c8a;
-    background-image:url("/WEB-INF/resources/warehouse.webp");
+    background-image:url("warehouse.webp");
     background-size:cover;
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: right;
 }
-
+body1{
+    font-family: Roboto, sans-serif;
+    color: #5e6c8a;
+    background-image:url("warehouse1.webp");
+    background-size:cover;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: right;
+}
 .container {
     position: relative;
     background-color: #fafafe;

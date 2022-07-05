@@ -7,10 +7,10 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8"%>
 <html>
-  <head>
+<head>
     <title>Group 13's first Tomcat</title>
-  </head>
-  <body>
-  Hello World!
-  </body>
+</head>
+<body>
+<label>Hello World!</label>
+</body>
 </html>
