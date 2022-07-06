@@ -1,0 +1,21 @@
+docker run --name=MySQL-zzx -d -p 3307:3306 mysql/mysql-server:latest
+
+docker run --name=MySQL-xbz -d -p 3308:3306 mysql/mysql-server:latest
+
+docker run --name=MySQL-wyz -d -p 3309:3306 mysql/mysql-server:latest
+
+docker logs MySQL-zzx
+docker exec -it MySQL-zzx mysql -uroot -p
+ALTER USER 'root'@'localhost' IDENTIFIED BY 'zzx123456';
+
+docker logs MySQL-xbz
+docker exec -it MySQL-xbz mysql -uroot -p
+ALTER USER 'root'@'localhost' IDENTIFIED BY 'xbz123456';
+
+docker logs MySQL-wyz
+docker exec -it MySQL-wyz mysql -uroot -p
+ALTER USER 'root'@'localhost' IDENTIFIED BY 'wyz123456';
+
+use mysql;
+update user set host = '%' where user = 'root';
+FLUSH PRIVILEGES;
