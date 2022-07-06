@@ -80,6 +80,16 @@ public class UserDAOImpl implements UserDAO {
 				// 密码正确，就返回1，否则返回0
 				flag = user.getPassword().equals(rs.getString("staff_password")) ? 1 : 0;
 
+				// 数据库信息写入 user 对象中
+				user.setUsername(rs.getString("username"));
+				user.setPassword(rs.getString("staff_password"));
+				user.setName(rs.getString("name"));
+				user.setAge(rs.getInt("age"));
+				user.setPhone(rs.getString("telephone"));
+				user.setGender(rs.getString("gender"));
+				user.isManger(rs.getBoolean("is_manager"));
+
+				// 关闭结果集和 statement
 				rs.close();
 				pst.close();
 			} catch (SQLException e) {
@@ -109,7 +119,9 @@ public class UserDAOImpl implements UserDAO {
 				// 获取系统时间
 				java.sql.Timestamp time = new java.sql.Timestamp(System.currentTimeMillis());
 				// 设置参数
-				pst.setInt(1, Integer.parseInt(time.toString()));
+				// TODO staff_id 自增，不需要设置
+				pst.setInt(1, 4);
+//				pst.setInt(1, Integer.parseInt(time.toString()));
 				pst.setString(2, user.getUsername());
 				pst.setString(3, user.getPassword());
 				pst.setString(4, user.getName());

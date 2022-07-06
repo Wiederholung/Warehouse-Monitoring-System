@@ -61,7 +61,7 @@ public class User {
 		this.gender = gender;
 	}
 
-	public void setIdentity(boolean isManger) {
+	public void isManger(boolean isManger) {
 		this.isManger = isManger;
 	}
 }
