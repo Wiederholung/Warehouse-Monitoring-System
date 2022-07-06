@@ -1,6 +1,7 @@
 package model.vo;
 
 public class User {
+	private String userID;
 	private String username;
 	private String password;
 	private String name;
@@ -66,11 +67,13 @@ public class User {
 		this.isManger = isManger;
 	}
 
-	public int getManageWarehouse() {
-		return manageWarehouse;
-	}
+	public int getManageWarehouse() { return manageWarehouse; }
 
 	public void setManageWarehouse(int warehouseId) {
 		this.manageWarehouse = warehouseId;
 	}
+
+	public String getUserID() { return userID; }
+
+	public void setUserID(String userID) { this.userID = userID; }
 }

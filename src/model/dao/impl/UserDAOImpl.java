@@ -80,6 +80,7 @@ public class UserDAOImpl implements UserDAO {
 				flag = user.getPassword().equals(rs.getString("staff_password")) ? 1 : 0;
 
 				// 数据库信息写入 user 对象中
+				user.setUserID(rs.getString("staff_id"));
 				user.setUsername(rs.getString("username"));
 				user.setPassword(rs.getString("staff_password"));
 				user.setName(rs.getString("name"));

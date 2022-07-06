@@ -18,7 +18,7 @@
     <div class="card">
         <h1 class="card_title">Login to your account</h1>
         <p class="card_title-info">Warehouse Monitoring System</p>
-<%--        TODO 后端无法就收会话中的参数--%>
+
         <form class="card_form" method="post" action="./login">
             <div class="input">
                 <input type="text" class="input_field" required name="username" id="username" />
