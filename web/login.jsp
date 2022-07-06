@@ -20,19 +20,17 @@
         <p class="card_title-info">Warehouse Monitoring System</p>
 <%--        TODO 后端无法就收会话中的参数--%>
         <form class="card_form" method="post" action="./login">
-
             <div class="input">
-                <input type="text" class="input_field" required />
+                <input type="text" class="input_field" required name="username" id="username" />
                 <label class="input_label">Username</label><br/>
             </div>
 
             <div class="input">
-                <input type="password" class="input_field" required />
+                <input type="password" class="input_field" required name="password" id="password" />
                 <label class="input_label">Password</label><br/>
             </div>
 
-            <input class="card_button" type="SUBMIT" value="Log in" name="submit" />
-
+            <input class="card_button" type="submit" value="Log in" name="submit" />
             <button class="card_button" type="button"
                     onclick="window.location.href='register.jsp'">
                 Create an account
@@ -41,5 +39,6 @@
     </div>
 
 </div>
+
 </body>
 </html>

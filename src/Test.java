@@ -15,7 +15,7 @@ public class Test {
         user.setPhone("123456789");
         user.setGender("Female");
 
-        userDAO.register(user);
+//        userDAO.register(user);
 
         int flag = userDAO.login(user);
         if (flag == 1) {
