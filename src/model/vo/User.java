@@ -8,6 +8,7 @@ public class User {
 	private String phone;
 	private String gender;
 	private boolean isManger;
+	private int manageWarehouse;
 
 	public String getUsername() {
 		return username;
@@ -63,5 +64,13 @@ public class User {
 
 	public void isManger(boolean isManger) {
 		this.isManger = isManger;
+	}
+
+	public int getManageWarehouse() {
+		return manageWarehouse;
+	}
+
+	public void setManageWarehouse(int warehouseId) {
+		this.manageWarehouse = warehouseId;
 	}
 }

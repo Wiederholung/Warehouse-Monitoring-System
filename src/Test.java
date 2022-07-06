@@ -7,13 +7,13 @@ public class Test {
         UserDAO userDAO = new UserDAOImpl();
 
         User user = new User();
-        user.setUsername("mike");
-        user.setPassword("1234");
+        user.setUsername("zsy");
+        user.setPassword("123");
         user.isManger(true);
-        user.setName("Mike");
+        user.setName("Siyu Zheng");
         user.setAge(20);
         user.setPhone("123456789");
-        user.setGender("Male");
+        user.setGender("Female");
 
         userDAO.register(user);
 

@@ -84,7 +84,7 @@ public class UserDAOImpl implements UserDAO {
 				user.setPassword(rs.getString("staff_password"));
 				user.setName(rs.getString("name"));
 				user.setAge(rs.getInt("age"));
-				user.setPhone(rs.getString("telephone"));
+				user.setPhone(rs.getString("phone"));
 				user.setGender(rs.getString("gender"));
 				user.isManger(rs.getBoolean("is_manager"));
 
@@ -104,31 +104,28 @@ public class UserDAOImpl implements UserDAO {
 
 	@Override
 	public int register(User user) {
+		// TODO 设置新用户仓库访问权限
 		int flag = checkInfo(user);
 		if (flag == 1) {
 			DBConnector db = null;
 			String sql = "insert into " +
-					"staff(staff_id, username, staff_password, name, age, gender, telephone, is_manager) " +
-					"values(?, ?, ?, ?, ?, ?, ?, ?)";
+					"staff(username, staff_password, name, age, gender, phone, is_manager) " +
+					"values(?, ?, ?, ?, ?, ?, ?)";
 			PreparedStatement pst;
 
 			try {
 				db = new DBConnector();
 				pst = db.getConnection().prepareStatement(sql);
-				// 获取系统时间
-				java.sql.Timestamp time = new java.sql.Timestamp(System.currentTimeMillis());
+
 				// 设置参数
-				// TODO staff_id 自增，不需要设置
-				pst.setInt(1, 4);
-//				pst.setInt(1, Integer.parseInt(time.toString()));
-				pst.setString(2, user.getUsername());
-				pst.setString(3, user.getPassword());
-				pst.setString(4, user.getName());
-				pst.setInt(5, user.getAge());
-				pst.setString(6, user.getGender());
-				pst.setString(7, user.getPhone());
+				pst.setString(1, user.getUsername());
+				pst.setString(2, user.getPassword());
+				pst.setString(3, user.getName());
+				pst.setInt(4, user.getAge());
+				pst.setString(5, user.getGender());
+				pst.setString(6, user.getPhone());
 				int isManager = user.isManger() ? 1 : 0;
-				pst.setInt(8, isManager);
+				pst.setInt(7, isManager);
 
 				pst.executeUpdate();
 
