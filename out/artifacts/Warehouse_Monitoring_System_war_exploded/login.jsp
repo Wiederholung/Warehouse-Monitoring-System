@@ -21,12 +21,12 @@
 <%--        TODO 后端无法就收会话中的参数--%>
         <form class="card_form" method="post" action="./login">
             <div class="input">
-                <input type="text" class="input_field" required name="username" />
+                <input type="text" class="input_field" required name="username" id="username" />
                 <label class="input_label">Username</label><br/>
             </div>
 
             <div class="input">
-                <input type="password" class="input_field" required name="password" />
+                <input type="password" class="input_field" required name="password" id="password" />
                 <label class="input_label">Password</label><br/>
             </div>
 
