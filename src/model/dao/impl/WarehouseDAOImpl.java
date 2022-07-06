@@ -1,12 +1,12 @@
 package model.dao.impl;
 
-
 import model.dao.WarehouseDAO;
 import model.vo.Warehouse;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -47,39 +47,20 @@ public class WarehouseDAOImpl implements WarehouseDAO {
     }
 
     public List<Warehouse> queryWarehouse(Warehouse warehouse) {
-        List<Warehouse> whList = null;
-        DBConnector db = null;
-        String sql = "select * from warehouse where wh_name = ?";
-        PreparedStatement pst;
-
-        try {
-            db = new DBConnector();
-            pst = db.getConnection().prepareStatement(sql);
-            pst.setString(1, warehouse.getWarehouseName());
-            ResultSet rs = pst.executeQuery();
-
-            warehouse.setWarehouseID(rs.getInt("wh_id"));
-            warehouse.setWarehouseName(rs.getString("wh_name"));
-            warehouse.setWarehouseType(rs.getString("wh_type"));
-            warehouse.setNumShelf(rs.getInt("num_shelf"));
-            warehouse.setNumGood(rs.getInt("num_good"));
-            warehouse.setCreateTime(rs.getTimestamp("create_time").toString());
-
-            whList.add(warehouse);
-
-            rs.close();
-            pst.close();
-        } catch (SQLException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        } finally {
-            Objects.requireNonNull(db).close();
+        List<Warehouse> qList = queryWarehouse();
+        List<Warehouse> whList = new ArrayList<>();
+        // 找出仓库名为warehouse.getWarehouseName()的仓库
+        for (Warehouse wh : qList) {
+            if (wh.getWarehouseName().equals(warehouse.getWarehouseName())) {
+                whList.add(wh);
+                break;
+            }
         }
         return whList;
     }
 
     public List<Warehouse> queryWarehouse() {
-        List<Warehouse> whList = null;
+        List<Warehouse> whList = new ArrayList<>();
         DBConnector db = null;
         String sql = "select * from warehouse";
 
