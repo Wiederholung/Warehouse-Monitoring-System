@@ -23,7 +23,6 @@ public class LoginAction extends HttpServlet {
 		user.setPassword(req.getParameter("password"));
 
 		UserDAO userDAO = new UserDAOImpl();
-
 		int flag = -1;
 		try	{
 			flag = userDAO.login(user);
@@ -39,21 +38,15 @@ public class LoginAction extends HttpServlet {
 			req.getSession().setAttribute("username", user.getUsername());
 			res.sendRedirect("./welcome.jsp");
 		}
-		else if (flag == -1) {
-			// TODO 弹出消息
-			res.setCharacterEncoding("utf-8");
-			PrintWriter out = res.getWriter();
-			out.print("<script>alert('The username doesn't exist!'); window.location='login.jsp' </script>");
-			out.flush();
-			out.close();
+		res.setCharacterEncoding("utf-8");
+		PrintWriter out = res.getWriter();
+		if (flag == -1) {
+			out.print("<script>alert('No username!'); window.location='login.jsp' </script>");
 		}
 		else {
-			// TODO 弹出消息
-			res.setCharacterEncoding("utf-8");
-			PrintWriter out = res.getWriter();
 			out.print("<script>alert('Wrong password!'); window.location='login.jsp' </script>");
-			out.flush();
-			out.close();
 		}
+		out.flush();
+		out.close();
 	}
 }
