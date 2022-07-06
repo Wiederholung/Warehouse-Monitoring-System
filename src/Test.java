@@ -8,7 +8,7 @@ public class Test {
 
         User user = new User();
         user.setUsername("mike");
-        user.setPassword("123");
+        user.setPassword("1234");
         user.isManger(true);
         user.setName("Mike");
         user.setAge(20);

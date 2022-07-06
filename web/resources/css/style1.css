@@ -1,0 +1,154 @@
+@import url("https://fonts.googleapis.com/css2?family=Bree+Serif&family=Poppins&display=swap");
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --black-bkg: #110b05;
+  --white-text: rgba(237, 237, 237, 0.8);
+  --bkg: #91721d;
+  --yellow: #d4af06;
+}
+
+body {
+  display: grid;
+  place-items: center;
+  font-family: "Poppins", sans-serif;
+  background-color: rgb(186, 206, 230);
+}
+
+ul {
+  list-style: none;
+}
+
+.main {
+  width: 100%;
+  max-width: 1200px;
+  height: 100vh;
+  display: grid;
+  place-items: center;
+}
+
+.cards {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+  grid-auto-flow: row;
+  justify-items: center;
+  grid-gap: 1em;
+}
+
+.cards_item {
+  width: 340px;
+  overflow: hidden;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 30px 90px;
+  border: 10px solid rgba(212, 212, 212, 0.726);
+}
+
+.card {
+  position: relative;
+  height: 440px;
+  background-color: var(--black-bkg);
+  cursor: pointer;
+}
+.card_content {
+  margin-top: 300px;
+  height: 150px;
+  position: absolute;
+  z-index: 2;
+  transform: translateY(40%);
+  padding: 2em;
+  color: white;
+  background: linear-gradient(transparent, #1d1106 16%);
+  transition: transform 0.7s ease-in-out;
+}
+.card_text {
+  font-size: 0.8rem;
+  line-height: 1.5rem;
+  color: var(--white-text);
+}
+.card_title {
+  font-size: 1.3rem;
+  color: var(--yellow);
+  font-family: "Bree Serif", serif;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+.card_image {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.card_image img {
+  transform: translateY(0) scale(1);
+  transition: transform 0.7s ease-in-out;
+}
+
+
+.card-title span {
+  margin-right: 20px;
+}
+.card_text p {
+  margin: 10px 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.card_text p:not(:first-of-type) {
+  opacity: 0;
+  transition: opacity 0.6s 0.2s;
+}
+.note {
+  display: inline-block;
+  padding: 5px;
+  margin: 10px 0;
+  line-height: 1em;
+  text-transform: uppercase;
+  text-align: right;
+  font-size: 0.7rem;
+  background-color: var(--yellow);
+  color: var(--black-bkg);
+}
+
+.card_text {
+  font-size: 0.8rem;
+  line-height: 1.5rem;
+  color: var(--white-text);
+}
+
+.click{
+  margin-top: 20px;
+  margin-left: 80px;
+  font-size: 1.5rem;
+  border: 0;
+  font-display: auto;
+  font-family: "Bree Serif", serif;
+  color: rgb(251, 251, 251);
+  background-color:#0a1523;
+  height: 50px;
+  opacity: 1;
+  z-index: 2;
+  width: 170px;
+  border-radius:20px
+}
+.button1{
+  font-size: 1.5rem;
+  background-color: rgb(186, 206, 230);
+  color: cornsilk;
+  border-bottom: 2px solid cornsilk;
+  border-left-color: rgb(186, 206, 230);
+  border-right-color: rgb(186, 206, 230);
+  border-top-color: rgb(186, 206, 230);
+}
+.h1{
+  font-size: 1.5rem;
+  
+}

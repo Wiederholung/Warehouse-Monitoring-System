@@ -6,6 +6,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import model.dao.UserDAO;
 import model.dao.impl.UserDAOImpl;
@@ -24,12 +25,36 @@ public class LoginAction extends HttpServlet {
 
 		UserDAO userDAO = new UserDAOImpl();
 
-		int flag = userDAO.login(user);
+		int flag = -1;
+		try	{
+			flag = userDAO.login(user);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		System.out.println(user.getUsername());
+		System.out.println(flag);
+
 		if (flag == 1) {
 			req.getSession().setAttribute("username", user.getUsername());
 			res.sendRedirect("./welcome.jsp");
 		}
-		else if (flag == -1) res.sendRedirect("./errorName.jsp");
-		else res.sendRedirect("./errorPass.jsp");
+		else if (flag == -1) {
+			// TODO 弹出消息
+			res.setCharacterEncoding("utf-8");
+			PrintWriter out = res.getWriter();
+			out.print("<script>alert('The username doesn't exist!'); window.location='login.jsp' </script>");
+			out.flush();
+			out.close();
+		}
+		else {
+			// TODO 弹出消息
+			res.setCharacterEncoding("utf-8");
+			PrintWriter out = res.getWriter();
+			out.print("<script>alert('Wrong password!'); window.location='login.jsp' </script>");
+			out.flush();
+			out.close();
+		}
 	}
 }

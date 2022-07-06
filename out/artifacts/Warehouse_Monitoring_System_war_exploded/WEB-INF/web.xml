@@ -5,7 +5,7 @@
          http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
     <servlet>
-        <servlet-name>loginServlet</servlet-name>
+        <servlet-name>loginControl</servlet-name>
         <servlet-class>control.LoginAction</servlet-class>
     </servlet>
 
@@ -14,7 +14,7 @@
     </welcome-file-list>
 
     <servlet-mapping>
-        <servlet-name>loginServlet</servlet-name>
+        <servlet-name>loginControl</servlet-name>
         <url-pattern>/login</url-pattern>
     </servlet-mapping>
 
