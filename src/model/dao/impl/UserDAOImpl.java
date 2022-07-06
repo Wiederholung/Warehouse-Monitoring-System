@@ -12,12 +12,12 @@ public class UserDAOImpl implements UserDAO {
 	@Override
 	public boolean doseUserExist(User user) {
 		boolean flag = false;
-		DBUtil db = null;
+		DBConnector db = null;
 		String sql = "select * from staff where username = ?";
 		PreparedStatement pst;
 
 		try {
-			db = new DBUtil();
+			db = new DBConnector();
 			pst = db.getConnection().prepareStatement(sql);
 			pst.setString(1, user.getUsername());
 			ResultSet rs = pst.executeQuery();
@@ -56,7 +56,7 @@ public class UserDAOImpl implements UserDAO {
 	@Override
 	public int login(User user) {
 		int flag = -1;
-		DBUtil db = null;
+		DBConnector db = null;
 		String sql = "select * from staff where username = ?";
 		PreparedStatement pst;
 
@@ -64,7 +64,7 @@ public class UserDAOImpl implements UserDAO {
 			// 下面是针对数据库的具体操作
 			try {
 				// 连接数据库
-				db = new DBUtil();
+				db = new DBConnector();
 				pst = db.getConnection().prepareStatement(sql);
 				pst.setString(1, user.getUsername());
 
@@ -97,14 +97,14 @@ public class UserDAOImpl implements UserDAO {
 	public int register(User user) {
 		int flag = checkInfo(user);
 		if (flag == 1) {
-			DBUtil db = null;
+			DBConnector db = null;
 			String sql = "insert into " +
 					"staff(staff_id, username, staff_password, name, age, gender, telephone, is_manager) " +
 					"values(?, ?, ?, ?, ?, ?, ?, ?)";
 			PreparedStatement pst;
 
 			try {
-				db = new DBUtil();
+				db = new DBConnector();
 				pst = db.getConnection().prepareStatement(sql);
 				// 获取系统时间
 				java.sql.Timestamp time = new java.sql.Timestamp(System.currentTimeMillis());

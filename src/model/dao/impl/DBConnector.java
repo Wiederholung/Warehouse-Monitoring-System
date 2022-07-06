@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.Statement;
 
-public class DBUtil {
+public class DBConnector {
     private static final String JDBC_DRIVER  = "com.mysql.cj.jdbc.Driver";
     private static final String DB_URL = "jdbc:mysql://wada.metattri.com:3360/mydb" +
             "?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC";
@@ -13,7 +13,7 @@ public class DBUtil {
     private Connection conn = null;
     private Statement stmt = null;
 
-    public DBUtil() {
+    public DBConnector() {
         try {
             Class.forName(JDBC_DRIVER);
             conn = DriverManager.getConnection(DB_URL, USER, PASSWORD);
