@@ -43,7 +43,6 @@ public class UserDAOImpl implements UserDAO {
 
 	@Override
 	public int checkInfo(User user) {
-		// TODO Auto-generated method stub
 		int flag;
 		if (!doseUserExist(user)) {
 			if (checkPasswordStrength(user)) flag = 1;
