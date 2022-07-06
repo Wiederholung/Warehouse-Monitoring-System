@@ -10,8 +10,9 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Objects;
 
-public class WarehouseImpl implements WarehouseDAO {
+public class WarehouseDAOImpl implements WarehouseDAO {
     public boolean addWarehouse(Warehouse warehouse) {
+        // TODO 检测仓库是否重名
         boolean flag;
         DBConnector db = null;
         String sql = "insert into " +
@@ -50,17 +51,21 @@ public class WarehouseImpl implements WarehouseDAO {
         DBConnector db = null;
         String sql = "select * from warehouse where wh_name = ?";
         PreparedStatement pst;
+
         try {
             db = new DBConnector();
             pst = db.getConnection().prepareStatement(sql);
             pst.setString(1, warehouse.getWarehouseName());
             ResultSet rs = pst.executeQuery();
+
             warehouse.setWarehouseID(rs.getInt("wh_id"));
             warehouse.setWarehouseName(rs.getString("wh_name"));
             warehouse.setWarehouseType(rs.getString("wh_type"));
             warehouse.setNumShelf(rs.getInt("num_shelf"));
             warehouse.setNumGood(rs.getInt("num_good"));
             warehouse.setCreateTime(rs.getTimestamp("create_time").toString());
+
+            whList.add(warehouse);
 
             rs.close();
             pst.close();
@@ -74,18 +79,42 @@ public class WarehouseImpl implements WarehouseDAO {
     }
 
     public List<Warehouse> queryWarehouse() {
-        // TODO Auto-generated method stub
-        return null;
+        List<Warehouse> whList = null;
+        DBConnector db = null;
+        String sql = "select * from warehouse";
+
+        try {
+            db = new DBConnector();
+            ResultSet rs = db.getStatement().executeQuery(sql);
+
+            while (rs.next()) {
+                Warehouse warehouse = new Warehouse();
+                warehouse.setWarehouseID(rs.getInt("wh_id"));
+                warehouse.setWarehouseName(rs.getString("wh_name"));
+                warehouse.setWarehouseType(rs.getString("wh_type"));
+                warehouse.setNumShelf(rs.getInt("num_shelf"));
+                warehouse.setNumGood(rs.getInt("num_good"));
+                warehouse.setCreateTime(rs.getTimestamp("create_time").toString());
+
+                whList.add(warehouse);
+            }
+            rs.close();
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } finally {
+            Objects.requireNonNull(db).close();
+        }
+        return whList;
     }
 
     public boolean updateWarehouse(Warehouse warehouse) {
-        // TODO Auto-generated method stub
-        return false;
+        // TODO 检测仓库是否存在
+        return addWarehouse(warehouse);
     }
 
     public boolean delWarehouse(Warehouse warehouse) {
-        // TODO Auto-generated method stub
+        // TODO 约束：同时删除仓库下的货架/货物，以及管理者和工人的访问权限
         return false;
     }
-
 }

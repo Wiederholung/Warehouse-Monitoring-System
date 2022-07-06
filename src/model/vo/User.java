@@ -1,7 +1,7 @@
 package model.vo;
 
 public class User {
-	private String userID;
+	private int userID;
 	private String username;
 	private String password;
 	private String name;
@@ -9,7 +9,7 @@ public class User {
 	private String phone;
 	private String gender;
 	private boolean isManger;
-	private int manageWarehouse;
+	private int[] manageWarehouse;
 
 	public String getUsername() {
 		return username;
@@ -67,13 +67,13 @@ public class User {
 		this.isManger = isManger;
 	}
 
-	public int getManageWarehouse() { return manageWarehouse; }
+	public int[] getManageWarehouse() { return manageWarehouse; }
 
-	public void setManageWarehouse(int warehouseId) {
+	public void setManageWarehouse(int[] warehouseId) {
 		this.manageWarehouse = warehouseId;
 	}
 
-	public String getUserID() { return userID; }
+	public int getUserID() { return userID; }
 
-	public void setUserID(String userID) { this.userID = userID; }
+	public void setUserID(int userID) { this.userID = userID; }
 }

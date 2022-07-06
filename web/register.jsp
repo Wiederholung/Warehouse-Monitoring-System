@@ -18,14 +18,14 @@
     <div class="card">
         <h1 class="card_title">Register your account</h1>
         <p class="card_title-info">Warehouse Monitoring System</p>
-        <%--        TODO 后端无法就收会话中的参数--%>
+
         <form class="card_form" method="post" action="./register">
             <div class="input">
-                <input type="text" class="input_field" required />
+                <input type="text" class="input_field" required name="username" id="username" />
                 <label class="input_label">Username</label><br/>
             </div>
             <div class="input">
-                <input type="password" class="input_field" required />
+                <input type="password" class="input_field" required name="password" id="password" />
                 <label class="input_label">Password</label><br/>
 
             </div>

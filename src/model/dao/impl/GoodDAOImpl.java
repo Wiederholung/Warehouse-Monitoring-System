@@ -1,4 +1,4 @@
 package model.dao.impl;
 
-public class GoodImpl {
+public class GoodDAOImpl {
 }

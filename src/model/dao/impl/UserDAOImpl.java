@@ -80,7 +80,7 @@ public class UserDAOImpl implements UserDAO {
 				flag = user.getPassword().equals(rs.getString("staff_password")) ? 1 : 0;
 
 				// 数据库信息写入 user 对象中
-				user.setUserID(rs.getString("staff_id"));
+				user.setUserID(rs.getInt("staff_id"));
 				user.setUsername(rs.getString("username"));
 				user.setPassword(rs.getString("staff_password"));
 				user.setName(rs.getString("name"));
@@ -104,32 +104,50 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Override
-	public int register(User user) {
-		// TODO 设置新用户仓库访问权限
-		int flag = checkInfo(user);
+	public int addManger(User manger, User newManager) {
+		int flag = checkInfo(newManager);
 		if (flag == 1) {
 			DBConnector db = null;
-			String sql = "insert into " +
-					"staff(username, staff_password, name, age, gender, phone, is_manager) " +
-					"values(?, ?, ?, ?, ?, ?, ?)";
 			PreparedStatement pst;
 
 			try {
 				db = new DBConnector();
-				pst = db.getConnection().prepareStatement(sql);
-
-				// 设置参数
-				pst.setString(1, user.getUsername());
-				pst.setString(2, user.getPassword());
-				pst.setString(3, user.getName());
-				pst.setInt(4, user.getAge());
-				pst.setString(5, user.getGender());
-				pst.setString(6, user.getPhone());
-				int isManager = user.isManger() ? 1 : 0;
+				String newStaff = "insert into " +
+						"staff(username, staff_password, name, age, gender, phone, is_manager) " +
+						"values(?, ?, ?, ?, ?, ?, ?)";
+				pst = db.getConnection().prepareStatement(newStaff);
+				// 创建新管理者
+				pst.setString(1, newManager.getUsername());
+				pst.setString(2, newManager.getPassword());
+				pst.setString(3, newManager.getName());
+				pst.setInt(4, newManager.getAge());
+				pst.setString(5, newManager.getGender());
+				pst.setString(6, newManager.getPhone());
+				int isManager = manger.isManger() ? 1 : 0;
 				pst.setInt(7, isManager);
-
 				pst.executeUpdate();
 
+				// 继承当前登录 manager 的权限
+				String queryId = "select * from staff where username = ?";
+				pst = db.getConnection().prepareStatement(queryId);
+				pst.setString(1, newManager.getUsername());
+				ResultSet rs = pst.executeQuery();
+				rs.next();
+				newManager.setUserID(rs.getInt("staff_id"));
+				// 查询当前管理者的权限
+				String queryAccess = "select * from staff_access where staff_staff_id = ?";
+				pst = db.getConnection().prepareStatement(queryAccess);
+				pst.setInt(1, manger.getUserID());
+				rs = pst.executeQuery();
+				// 循环添加新管理者的权限
+				String newAccess = "insert into staff_access(staff_staff_id, warehouse_wh_id) values(?, ?)";
+				pst = db.getConnection().prepareStatement(newAccess);
+				pst.setInt(1, newManager.getUserID());
+				while (rs.next()) {
+					pst.setInt(2, rs.getInt("warehouse_wh_id"));
+					pst.executeUpdate();
+				}
+				rs.close();
 				pst.close();
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
@@ -140,6 +158,28 @@ public class UserDAOImpl implements UserDAO {
 			}
 		}
 		return flag;
+	}
+
+	@Override
+	public boolean addWorker(User manger, User newWorker) {
+		boolean flag = false;
+		// 将管理者身份设置为工人身份
+		manger.isManger(false);
+		try	{
+			flag = (addManger(manger, newWorker) == 1);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			System.out.println(e.getMessage());
+		} finally {
+			// 恢复管理者身份
+			manger.isManger(true);
+		}
+		return flag;
+	}
+
+	@Override
+	public boolean delWorker(User worker) {
+		return false;
 	}
 }
 

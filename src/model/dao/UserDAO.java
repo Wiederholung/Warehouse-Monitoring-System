@@ -11,5 +11,7 @@ public interface UserDAO {
 
 	int login(User user);
 
-	int register(User user);
+	int addManger(User manger, User newManager);
+	boolean addWorker(User manger, User newWorker);
+	boolean delWorker(User worker);
 }
