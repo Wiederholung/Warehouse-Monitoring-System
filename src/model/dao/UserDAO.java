@@ -2,16 +2,30 @@ package model.dao;
 
 import model.vo.User;
 
+import java.util.ArrayList;
+
 public interface UserDAO {
-	boolean doseUserExist(User user);
+	User getUser(String username) throws Exception;
 
-	boolean checkPasswordStrength(User user);
+	void addUser(User user) throws Exception;
 
-	int checkInfo(User user);
+	void updateUser(User user) throws Exception;
 
-	int login(User user);
+	boolean checkPasswordStrength(String password) throws Exception;
 
-	int addManger(User manger, User newManager);
-	boolean addWorker(User manger, User newWorker);
-	boolean delWorker(User worker);
+	int login(User user) throws Exception;
+
+	boolean registerWorker(User worker) throws Exception;
+
+	boolean addManger(User newWorker, ArrayList<Integer> warehouseID) throws Exception;
+
+	void getAccess(User user) throws Exception;
+
+	boolean addWorkerToWh(User manager, int workerID, int warehouseID) throws Exception;
+
+	boolean updWorkerFromWh(User manager,int workerID, int warehouseID) throws Exception;
+
+	boolean delWorkerFromWh(User manager, int workerID) throws Exception;
+
+	boolean delWorkerFromWh(User manager, int workerID, int warehouseID) throws Exception;
 }

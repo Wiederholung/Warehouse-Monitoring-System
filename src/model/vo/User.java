@@ -1,5 +1,7 @@
 package model.vo;
 
+import java.util.ArrayList;
+
 public class User {
 	private int userID;
 	private String username;
@@ -9,7 +11,8 @@ public class User {
 	private String phone;
 	private String gender;
 	private boolean isManger;
-	private int[] manageWarehouse;
+
+	private ArrayList<Integer> hasWarehouse;
 
 	public String getUsername() {
 		return username;
@@ -67,13 +70,11 @@ public class User {
 		this.isManger = isManger;
 	}
 
-	public int[] getManageWarehouse() { return manageWarehouse; }
-
-	public void setManageWarehouse(int[] warehouseId) {
-		this.manageWarehouse = warehouseId;
-	}
-
 	public int getUserID() { return userID; }
 
 	public void setUserID(int userID) { this.userID = userID; }
+
+	public ArrayList<Integer> getHasWarehouse() { return hasWarehouse;}
+
+	public void setHasWarehouse(ArrayList<Integer> hasWarehouse) { this.hasWarehouse = hasWarehouse; }
 }

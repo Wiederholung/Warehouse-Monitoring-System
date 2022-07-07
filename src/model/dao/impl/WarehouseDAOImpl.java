@@ -11,6 +11,10 @@ import java.util.List;
 import java.util.Objects;
 
 public class WarehouseDAOImpl implements WarehouseDAO {
+    @Override
+    public int  getWarehouseID(Warehouse warehouse) {
+        return 0;
+    }
     public boolean addWarehouse(Warehouse warehouse) {
         // TODO 检测仓库是否重名
         boolean flag;
