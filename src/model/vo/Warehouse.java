@@ -8,6 +8,14 @@ public class Warehouse {
     private int numGood;
     private String createTime;
 
+    public Warehouse() {
+    }
+
+    public Warehouse(String warehouseName, String warehouseType) {
+        this.warehouseName = warehouseName;
+        this.warehouseType = warehouseType;
+    }
+
     public int getWarehouseID() {
         return warehouseID;
     }

@@ -11,8 +11,17 @@ public class User {
 	private String phone;
 	private String gender;
 	private boolean isManger;
-
 	private ArrayList<Integer> hasWarehouse;
+
+	public User() {
+	}
+
+	public User(String username, String password, String name, boolean isManger) {
+		this.username = username;
+		this.password = password;
+		this.name = name;
+		this.isManger = isManger;
+	}
 
 	public String getUsername() {
 		return username;

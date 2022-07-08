@@ -15,8 +15,7 @@ public class WarehouseDAOImpl implements WarehouseDAO {
     public int  getWarehouseID(Warehouse warehouse) {
         return 0;
     }
-    public boolean addWarehouse(Warehouse warehouse) {
-        // TODO 检测仓库是否重名
+    public boolean addWarehouse(Warehouse warehouse) throws Exception {
         boolean flag;
         DBConnector db = null;
         String sql = "insert into " +
@@ -27,24 +26,17 @@ public class WarehouseDAOImpl implements WarehouseDAO {
         try {
             db = new DBConnector();
             pst = db.getConnection().prepareStatement(sql);
-
-            // 设置参数
-            // TODO 检查仓库是否重名
             pst.setString(1, warehouse.getWarehouseName());
             pst.setString(2, warehouse.getWarehouseType());
             pst.setInt(3, warehouse.getNumShelf());
-
             pst.executeUpdate();
-
             pst.close();
             // TODO 将仓库授权给管理员/工人
             flag = true;
-        } catch (SQLException e) {
-            // TODO Auto-generated catch block
-            System.out.println(e.getMessage());
+        } catch (Exception e) {
             flag = false;
+            throw e;
         } finally {
-            // 关闭数据库连接
             Objects.requireNonNull(db).close();
         }
         return flag;
@@ -93,9 +85,13 @@ public class WarehouseDAOImpl implements WarehouseDAO {
         return whList;
     }
 
-    public boolean updateWarehouse(Warehouse warehouse) {
-        // TODO 检测仓库是否存在
-        return addWarehouse(warehouse);
+    public boolean updateWarehouse(Warehouse warehouse) throws Exception {
+        // TODO 更新仓库信息
+        try {
+            return addWarehouse(warehouse);
+        } catch (Exception e) {
+            throw e;
+        }
     }
 
     public boolean delWarehouse(Warehouse warehouse) {
