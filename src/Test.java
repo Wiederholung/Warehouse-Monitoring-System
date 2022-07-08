@@ -41,7 +41,11 @@ public class Test {
             Warehouse wh = new Warehouse("3rd", "Sport");
             WarehouseDAO whDAO = new WarehouseDAOImpl();
 
-            whDAO.addWarehouse(wh);
+//            whDAO.addWarehouse(wh);
+
+            for (Warehouse warehouse : whDAO.queryWarehouse()) {
+                System.out.println(warehouse);
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
