@@ -42,7 +42,7 @@ public class WarehouseDAOImpl implements WarehouseDAO {
         return flag;
     }
 
-    public List<Warehouse> queryWarehouse(Warehouse warehouse) {
+    public List<Warehouse> queryWarehouse(Warehouse warehouse) throws Exception {
         List<Warehouse> qList = queryWarehouse();
         List<Warehouse> whList = new ArrayList<>();
         // 找出仓库名为warehouse.getWarehouseName()的仓库
@@ -55,7 +55,7 @@ public class WarehouseDAOImpl implements WarehouseDAO {
         return whList;
     }
 
-    public List<Warehouse> queryWarehouse() {
+    public List<Warehouse> queryWarehouse() throws Exception {
         List<Warehouse> whList = new ArrayList<>();
         DBConnector db = null;
         String sql = "select * from warehouse";
@@ -71,14 +71,13 @@ public class WarehouseDAOImpl implements WarehouseDAO {
                 warehouse.setWarehouseType(rs.getString("wh_type"));
                 warehouse.setNumShelf(rs.getInt("num_shelf"));
                 warehouse.setNumGood(rs.getInt("num_good"));
-                warehouse.setCreateTime(rs.getTimestamp("create_time").toString());
+                warehouse.setCreateTime(String.valueOf(rs.getTimestamp("creat_time")));
 
                 whList.add(warehouse);
             }
             rs.close();
         } catch (SQLException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+            throw e;
         } finally {
             Objects.requireNonNull(db).close();
         }
