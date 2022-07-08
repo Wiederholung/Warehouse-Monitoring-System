@@ -26,7 +26,11 @@ public class Test {
             userDAO.login(manager);
 //            userDAO.addUser(user2);
 //            userDAO.registerWorker(user2);
-            userDAO.addManger(manager2, new ArrayList<Integer>(){{add(1);add(2);add(3);}});
+            userDAO.addManger(manager2, new ArrayList<>() {{
+                add(1);
+                add(2);
+                add(3);
+            }});
 
 //            user2 = userDAO.getUser("xmll");
 //            userDAO.addWorkerToWh(manager, user2.getUserID(), 1);
