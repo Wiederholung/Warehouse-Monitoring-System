@@ -102,6 +102,7 @@ public class UserDAOImpl implements UserDAO {
 				user.setPhone(tUser.getPhone());
 				user.setGender(tUser.getGender());
 				user.isManger(tUser.isManger());
+				user.setHasWarehouse(tUser.getHasWarehouse());
 				flag = 1;
 				System.out.println("You are in!");
 			}
@@ -138,7 +139,9 @@ public class UserDAOImpl implements UserDAO {
 		try {
 			newManager.setHasWarehouse(warehouseID);
 			addUser(newManager);
-			for (int whID : warehouseID) {
+			User temp = getUser(newManager.getUsername());
+			newManager.setUserID(temp.getUserID());
+			for (int whID : newManager.getHasWarehouse()) {
 				addWorkerToWh(newManager, newManager.getUserID(), whID);
 			}
 			flag = true;
@@ -223,6 +226,7 @@ public class UserDAOImpl implements UserDAO {
 	@Override
 	public boolean addWorkerToWh(User manager, int workerID, int warehouseID) throws Exception{
 		boolean flag;
+		int count = manager.getHasWarehouse().size();
 		DBConnector db = null;
 		String newAccess = "insert into staff_access(staff_staff_id, warehouse_wh_id) " +
 				"values (?, ?)";
@@ -234,14 +238,21 @@ public class UserDAOImpl implements UserDAO {
 			pst.setInt(1, workerID);
 			for (int access : manager.getHasWarehouse()) {
 				if (access == warehouseID) {
-					System.out.println("The manager has access " +
-							"to the warehouse: " + warehouseID);
 					pst.setInt(2, warehouseID);
 					pst.executeUpdate();
+					System.out.println("The manager has access " +
+							"to the warehouse: " + warehouseID);
+				}
+				else {
+					count--;
 				}
 			}
 			pst.close();
-			flag = true;
+			if (count == 0) {
+				flag = false;
+				System.out.println("The manager has no access to warehouse: " + warehouseID);
+			}
+			else flag = true;
 		} catch (Exception e) {
 			flag = false;
 			throw e;
@@ -279,6 +290,8 @@ public class UserDAOImpl implements UserDAO {
 			for (int whID : manager.getHasWarehouse()) {
 				pst.setInt(2, whID);
 				pst.executeUpdate();
+				System.out.println("The manager has deleted " +
+						"the access to the warehouse: " + whID);
 			}
 			pst.close();
 			flag = true;
@@ -294,6 +307,7 @@ public class UserDAOImpl implements UserDAO {
 	@Override
 	public boolean delWorkerFromWh(User manager, int workerID, int warehouseID) throws Exception{
 		boolean flag;
+		int count = manager.getHasWarehouse().size();
 		DBConnector db = null;
 		String sql = "delete from staff_access where staff_staff_id = ? and warehouse_wh_id = ?";
 		PreparedStatement pst;
@@ -303,7 +317,19 @@ public class UserDAOImpl implements UserDAO {
 			pst = db.getConnection().prepareStatement(sql);
 			pst.setInt(1, workerID);
 			pst.setInt(2, warehouseID);
-			pst.executeUpdate();
+			for (int whID : manager.getHasWarehouse()) {
+				if (whID == warehouseID) {
+					pst.executeUpdate();
+					System.out.println("The manager has deleted " +
+							"the access to the warehouse: " + whID);
+				}
+				else { count--; }
+				if (count == 0) {
+					flag = false;
+					System.out.println("The manager has no access " +
+							"to the warehouse: " + warehouseID);
+				}
+			}
 			pst.close();
 			flag = true;
 		} catch (Exception e) {
