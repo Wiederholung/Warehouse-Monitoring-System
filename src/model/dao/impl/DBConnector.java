@@ -6,7 +6,7 @@ import java.sql.Statement;
 
 public class DBConnector {
     private static final String JDBC_DRIVER  = "com.mysql.cj.jdbc.Driver";
-    private static final String DB_URL = "jdbc:mysql://wada.metattri.com:3306/wmsdb" +
+    private static final String DB_URL = "jdbc:mysql://nas.metattri.com:3306/wmsdb" +
             "?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC";
     private static final String USER = "root";
     private static final String PASSWORD = "C 2998-mysql";
