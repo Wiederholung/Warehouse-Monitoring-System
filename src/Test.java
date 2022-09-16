@@ -29,10 +29,10 @@ public class Test {
 //                add(2);
 //                add(3);
 //            }});
-            user2 = userDAO.getUser("jake");    // 获取工人ID
+            user2 = userDAO.getUser("mike2");    // 获取工人ID
 //            userDAO.addWorkerToWh(manager, user2.getUserID(), 1);
 //            userDAO.addWorkerToWh(manager, user2.getUserID(), 3);
-            userDAO.delWorkerFromWh(manager, user2.getUserID(), 1);
+            userDAO.delWorkerFromWh(manager, user2.getUserID(), 2);
         } catch (Exception e) {
             e.printStackTrace();
         }
