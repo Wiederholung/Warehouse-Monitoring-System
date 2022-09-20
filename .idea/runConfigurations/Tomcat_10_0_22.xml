@@ -5,7 +5,7 @@
     <deployment>
       <artifact name="Warehouse-Monitoring-System:war exploded">
         <settings>
-          <option name="CONTEXT_PATH" value="/Warehouse_Monitoring_System_war_exploded" />
+          <option name="CONTEXT_PATH" value="/" />
         </settings>
       </artifact>
     </deployment>
