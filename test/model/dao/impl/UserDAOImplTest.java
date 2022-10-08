@@ -46,9 +46,9 @@ class UserDAOImplTest {
 
     @Test
     void registerWorker() throws Exception {
-        User u2 = new User("mike4", "123456",
+        User u = new User("mike4", "123456",
                 "Mike4", false);
-        userDAO.registerWorker(u2);
+        userDAO.registerWorker(u);
     }
 
     @Test
