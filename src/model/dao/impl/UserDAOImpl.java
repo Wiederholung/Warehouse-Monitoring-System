@@ -74,7 +74,6 @@ public class UserDAOImpl implements UserDAO {
 	@Override
 	// TODO 更新
 	public void updateUser(User user) throws Exception {
-		addUser(user);
 	}
 
 
@@ -265,15 +264,7 @@ public class UserDAOImpl implements UserDAO {
 	@Override
 	// TODO 更新
 	public boolean updWorkerFromWh(User manager, int workerID, int warehouseID) throws Exception{
-		boolean flag;
-		try {
-			addWorkerToWh(manager, workerID, warehouseID);
-			flag = true;
-		} catch (Exception e) {
-			flag = false;
-			throw e;
-		}
-		return flag;
+		return false;
 	}
 
 	@Override
