@@ -86,11 +86,7 @@ public class WarehouseDAOImpl implements WarehouseDAO {
 
     public boolean updateWarehouse(Warehouse warehouse) throws Exception {
         // TODO 更新仓库信息
-        try {
-            return addWarehouse(warehouse);
-        } catch (Exception e) {
-            throw e;
-        }
+        return false;
     }
 
     public boolean delWarehouse(Warehouse warehouse) {

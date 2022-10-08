@@ -27,8 +27,8 @@
             <div class="input">
                 <input type="password" class="input_field" required name="password" id="password" />
                 <label class="input_label">Password</label><br/>
-
             </div>
+
             <input class="card_button" type="SUBMIT" value="Create" name="create" />
             <button class="card_button" type="button"
                     onclick="window.location.href='login.jsp'">
