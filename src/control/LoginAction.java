@@ -1,6 +1,7 @@
 package control;
 
 import jakarta.servlet.ServletException;
+import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -14,6 +15,10 @@ import java.io.PrintWriter;
 public class LoginAction extends HttpServlet {
 	@Override
 	public void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
+//		String[] s = req.getCookies();  // Error: getCookies() in HttpServletRequest cannot be applied to given types
+		Cookie[] c = req.getCookies();
+		req.setAttribute("aValue","10");
+		req.setAttribute("anotherValue",10);
 	}
 
 	@Override
