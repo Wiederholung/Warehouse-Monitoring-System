@@ -16,9 +16,9 @@ public class LoginAction extends HttpServlet {
 	@Override
 	public void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
 //		String[] s = req.getCookies();  // Error: getCookies() in HttpServletRequest cannot be applied to given types
-		Cookie[] c = req.getCookies();
-		req.setAttribute("aValue","10");
-		req.setAttribute("anotherValue",10);
+//		Cookie[] c = req.getCookies();
+//		req.setAttribute("aValue","10");
+//		req.setAttribute("anotherValue",10);
 	}
 
 	@Override
