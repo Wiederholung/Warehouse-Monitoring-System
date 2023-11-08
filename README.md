@@ -1,6 +1,6 @@
 # Warehouse Monitoring System
 
-> Group Project for Design & Building 2 (2022/23)
+> Group Project for Design & Building 2 (2021/22)
 
 ## Problem Statement
 
